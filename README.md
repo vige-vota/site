@@ -69,3 +69,13 @@ To run the image use the command:
 docker run -d --name vota -p443:8443 vige/vota
 ```
 Then open `https://localhost` to connect to the vote application
+
+If you need only to start a demo execute:
+```
+docker pull vige/vota:demo
+```
+and then:
+```
+docker run -d --name vota -p80:5000 vige/vota:demo
+```
+Then open `http://localhost` to connect to the vote application
