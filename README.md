@@ -34,6 +34,18 @@ keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keyst
 ```
 moving the ${your_path} variable to your preferred path where put the keystore
 
+## Docker
+
+If you need a complete environment you can download docker and import the application through the command:
+```
+docker pull vige/vota-backend
+```
+To run the image use the command:
+```
+docker run -d --name vota -p8443:8443 vige/vota-backend
+```
+Then open `https://localhost:8443/swagger-ui.html` to connect to the vote application
+
 ## Start frontend
 
 Go in the frontend folder and run npm through the following commands:
@@ -62,20 +74,20 @@ Now you can connect in the application going to: open `https://localhost`
 
 If you need a complete environment you can download docker and import the application through the command:
 ```
-docker pull vige/vota
+docker pull vige/vota-frontend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota -p443:8443 vige/vota
+docker run -d --name vota -p443:8443 vige/vota-frontend
 ```
 Then open `https://localhost` to connect to the vote application
 
 If you need only to start a demo execute:
 ```
-docker pull vige/vota:demo
+docker pull vige/vota-frontend:demo
 ```
 and then:
 ```
-docker run -d --name vota -p80:5000 vige/vota:demo
+docker run -d --name vota -p80:5000 vige/vota-frontend:demo
 ```
 Then open `http://localhost` to connect to the vote application
