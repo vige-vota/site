@@ -35,7 +35,6 @@ Before to start the HTTPS you need to create a keystore. You can use the followi
 keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=localhost, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
 moving the ${your_path} variable to your preferred path where put the keystore
-```
 
 ### Docker
 
