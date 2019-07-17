@@ -1,4 +1,4 @@
-# VOTA
+#VOTA
 
 is a web application compatible with mobile devices to vote online. Configure parties and candidates from the console and add the rules according to the electoral law of the country. All voting information is stored in a database
 
@@ -8,7 +8,48 @@ It works with:
 - Gradle 5.5.1
 - React JS 16.8.6
 
-## Start backend
+##Start votingpapers
+
+the rest services to vote
+
+To build the application run the command inside the votingpaper folder
+```
+./gradlew build
+```
+Start the Java application with the following commands:
+```
+./gradlew startMongoDb
+```
+to start a MongoDB instance. Then:
+```
+java -jar build/libs/votingpaper-1.0.0-SNAPSHOT.jar --server.port=8543
+```
+and open `https://localhost:8543/swagger-ui.html` in your browser to connect to the vote application.
+
+If you need to start it on a environment production:
+```
+java -jar build/libs/votingpaper-1.0.0-SNAPSHOT.jar --server.port=8543 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat
+```
+Before to start the HTTPS you need to create a keystore. You can use the following sample:
+```
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=localhost, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
+```
+moving the ${your_path} variable to your preferred path where put the keystore
+```
+
+###Docker
+
+If you need a complete environment you can download docker and import the application through the command:
+```
+docker pull vige/vota-votingpaper
+```
+To run the image use the command:
+```
+docker run -d --name vota-votingpaper -p8543:8543 vige/vota-votingpaper
+```
+Then open `https://localhost:8543/swagger-ui.html` to connect to the vote application
+
+##Start backend
 
 To build the application run the command inside the backend folder
 ```
@@ -20,21 +61,21 @@ Start the Java application with the following commands:
 ```
 to start a MongoDB instance. Then:
 ```
-java -jar build/libs/vota-0.0.1-SNAPSHOT.jar --server.port=443
+java -jar build/libs/backend-1.0.0-SNAPSHOT.jar --server.port=8443
 ```
-and open `https://localhost/swagger-ui.html` in your browser to connect to the vote application.
+and open `https://localhost:8443/swagger-ui.html` in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -jar build/libs/vota-0.0.1-SNAPSHOT.jar --server.port=443 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat
+java -jar build/libs/backend-1.0.0-SNAPSHOT.jar --server.port=8443 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat
 ```
 Before to start the HTTPS you need to create a keystore. You can use the following sample:
 ```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=school.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=localhost, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
 moving the ${your_path} variable to your preferred path where put the keystore
 
-## Docker
+###Docker
 
 If you need a complete environment you can download docker and import the application through the command:
 ```
@@ -46,7 +87,7 @@ docker run -d --name vota-backend -p8443:8443 vige/vota-backend
 ```
 Then open `https://localhost:8443/swagger-ui.html` to connect to the vote application
 
-## Start frontend
+##Start frontend
 
 Go in the frontend folder and run npm through the following commands:
 ```
@@ -56,7 +97,7 @@ npm ci --only=production
 ```
 Then create a SSL ceetificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=Vige"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
 ```
 and copy it in the home directory under the .http-serve folder.
 
@@ -70,7 +111,7 @@ https-serve -s build
 ```
 Now you can connect in the application going to: open `https://localhost`
 
-## Docker
+###Docker
 
 If you need a complete environment you can download docker and import the application through the command:
 ```
