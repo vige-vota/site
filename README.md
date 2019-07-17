@@ -53,7 +53,7 @@ Then open `https://localhost:8543/swagger-ui.html` to connect to the vote applic
 
 To build the application run the command inside the backend folder
 ```
-./gradlew build
+./gradlew build -x test
 ```
 Start the Java application with the following commands:
 ```
