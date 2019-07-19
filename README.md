@@ -82,7 +82,7 @@ docker pull vige/vota-backend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-backend -p8443:8443 vige/vota-backend
+docker run -d --name vota-backend -p8443:8443 -e VOTINGPAPER_SCHEME=https -e VOTINGPAPER_HOST=localhost -e VOTINGPAPER_PORT=8543 vige/vota-backend
 ```
 Then open `https://localhost:8443/swagger-ui.html` to connect to the vote application
 
@@ -118,7 +118,7 @@ docker pull vige/vota-frontend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-frontend -p443:443 vige/vota-frontend
+docker run -d --name vota-frontend -p443:443 -e VOTINGPAPER_URL=https://localhost:8543/votingPapers -e BACKEND_URL=https://localhost:8443/vote vige/vota-frontend
 ```
 Then open `https://localhost` to connect to the vote application.
 
