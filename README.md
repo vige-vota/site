@@ -94,7 +94,7 @@ npm install
 npm ci --only=production
 npm run build
 ```
-Then create a SSL ceetificate for the https. Here a sample:
+Then create a SSL certificate for the https. Here a sample:
 ```
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
 ```
