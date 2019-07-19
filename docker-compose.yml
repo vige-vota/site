@@ -1,0 +1,21 @@
+version: '3'
+services:
+  votingpaper:
+    image: "vige/vota-votingpaper"
+    ports:
+      - "8543:8543"
+  backend:
+    image: "vige/vota-backend"
+    ports:
+      - "8443:8443"
+    environment:
+      VOTINGPAPER_SCHEME: https
+      VOTINGPAPER_HOST: localhost
+      VOTINGPAPER_PORT: 8543
+  frontend:
+    image: "vige/vota-frontend"
+    ports:
+      - "443:443"
+    environment:
+      VOTINGPAPER_URL: https://localhost:8543/votingPapers
+      BACKEND_URL: https://localhost:8443/vote
