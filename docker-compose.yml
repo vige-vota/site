@@ -10,12 +10,12 @@ services:
       - "8443:8443"
     environment:
       VOTINGPAPER_SCHEME: https
-      VOTINGPAPER_HOST: localhost
+      VOTINGPAPER_HOST: votingpaper.vota.vige.it
       VOTINGPAPER_PORT: 8543
   frontend:
     image: "vige/vota-frontend"
     ports:
       - "443:443"
     environment:
-      VOTINGPAPER_URL: https://localhost:8543/votingPapers
-      BACKEND_URL: https://localhost:8443/vote
+      VOTINGPAPER_URL: https://votingpaper.vota.vige.it:8543/votingPapers
+      BACKEND_URL: https://backend.vota.vige.it:8443/vote

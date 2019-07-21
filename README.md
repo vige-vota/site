@@ -32,9 +32,9 @@ java -jar build/libs/votingpaper-1.0.0-SNAPSHOT.jar --server.port=8543 --server.
 ```
 Before to start the HTTPS you need to create a keystore. You can use the following sample:
 ```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=localhost, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=votingpaper.vota.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
-moving the ${your_path} variable to your preferred path where put the keystore and open `https://localhost:8543/swagger-ui.html` in your browser to connect to the vote application.
+moving the ${your_path} variable to your preferred path where put the keystore and open `https://votingpaper.vota.vige.it:8543/swagger-ui.html` in your browser to connect to the vote application.
 
 ### Docker
 
@@ -46,7 +46,7 @@ To run the image use the command:
 ```
 docker run -d --name vota-votingpaper -p8543:8543 vige/vota-votingpaper
 ```
-Then open `https://localhost:8543/swagger-ui.html` to connect to the vote application
+Then open `https://votingpaper.vota.vige.it:8543/swagger-ui.html` to connect to the vote application
 
 ## Start backend
 
@@ -70,9 +70,9 @@ java -jar build/libs/backend-1.0.0-SNAPSHOT.jar --server.port=8443 --server.ssl.
 ```
 Before to start the HTTPS you need to create a keystore. You can use the following sample:
 ```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=localhost, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=backend.vota.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
-moving the ${your_path} variable to your preferred path where put the keystore and open `https://localhost:8443/swagger-ui.html` in your browser to connect to the vote application.
+moving the ${your_path} variable to your preferred path where put the keystore and open `https://backend.vota.vige.it:8443/swagger-ui.html` in your browser to connect to the vote application.
 
 ### Docker
 
@@ -82,9 +82,9 @@ docker pull vige/vota-backend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-backend -p8443:8443 -e VOTINGPAPER_SCHEME=https -e VOTINGPAPER_HOST=localhost -e VOTINGPAPER_PORT=8543 vige/vota-backend
+docker run -d --name vota-backend -p8443:8443 -e VOTINGPAPER_SCHEME=https -e VOTINGPAPER_HOST=votingpaper.vota.vige.it -e VOTINGPAPER_PORT=8543 vige/vota-backend
 ```
-Then open `https://localhost:8443/swagger-ui.html` to connect to the vote application
+Then open `https://backend.vota.vige.it:8443/swagger-ui.html` to connect to the vote application
 
 ## Start frontend
 
@@ -96,7 +96,7 @@ npm run build
 ```
 Then create a SSL certificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=frontend.vota.vige.it"
 ```
 and copy it in the home directory under the .http-serve folder.
 
@@ -108,7 +108,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open `https://localhost`
+Now you can connect in the application going to: open `https://frontend.vota.vige.it`
 
 ### Docker
 
@@ -118,9 +118,9 @@ docker pull vige/vota-frontend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-frontend -p443:443 -e VOTINGPAPER_URL=https://localhost:8543/votingPapers -e BACKEND_URL=https://localhost:8443/vote vige/vota-frontend
+docker run -d --name vota-frontend -p443:443 -e VOTINGPAPER_URL=https://votingpaper.vota.vige.it:8543/votingPapers -e BACKEND_URL=https://backend.vota.vige.it:8443/vote vige/vota-frontend
 ```
-Then open `https://localhost` to connect to the vote application.
+Then open `https://frontend.vota.vige.it` to connect to the vote application.
 
 If you need only to start a demo execute:
 ```
