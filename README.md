@@ -82,7 +82,7 @@ docker pull vige/vota-backend
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-backend -p8443:8443 -e VOTINGPAPER_SCHEME=https -e VOTINGPAPER_HOST=votingpaper.vota.vige.it -e VOTINGPAPER_PORT=8543 vige/vota-backend
+docker run -d --name vota-backend -p8443:8443 vige/vota-backend
 ```
 Then open `https://backend.vota.vige.it:8443/swagger-ui.html` to connect to the vote application
 
@@ -131,3 +131,15 @@ and then:
 docker run -d --name vota-frontend -p80:5000 vige/vota-frontend:demo
 ```
 Then open `http://localhost` to connect to the vote application
+
+### DNS configuration
+
+If you work in a production environment you need to configure the dns.
+Add the following DNS in your /etc/hosts file:
+```
+$IP_ADDRESS  votingpaper.vota.vige.it
+$IP_ADDRESS  backend.vota.vige.it
+$IP_ADDRESS  frontend.vota.vige.it
+```
+
+where in $IP_ADDRESS you must choose the ip addresses where are located the servers
