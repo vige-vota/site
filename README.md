@@ -7,8 +7,32 @@ It works with:
 - JDK 12
 - Gradle 5.5.1
 - React JS 16.8.6
+- Spring Boot 2.1.6.RELEASE
+- Docker 18.09.2
 
-## Start votingpapers
+## Start the demo
+
+Download the project from `https://github.com/vige-vota/site/archive/master.zip`
+
+Install Docker from `https://www.docker.com/get-started`
+
+Configure your /etc/hosts file the dns names:
+```
+$IP_ADDRESS  votingpaper.vota.vige.it
+$IP_ADDRESS  backend.vota.vige.it
+$IP_ADDRESS  frontend.vota.vige.it
+```
+where in $IP_ADDRESS you must choose the ip addresses where are located the servers
+
+unzip the master.zip, go in the unzipped folder and run:
+```
+docker-compose up
+```
+You are ready to connect to: `https://frontend.vota.vige.it`
+
+## Build and start the single projects
+
+### Start votingpapers
 
 the rest services to vote
 
@@ -36,7 +60,7 @@ keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keyst
 ```
 moving the ${your_path} variable to your preferred path where put the keystore and open `https://votingpaper.vota.vige.it:8543/swagger-ui.html` in your browser to connect to the vote application.
 
-### Docker
+#### Docker
 
 If you need a complete environment you can download docker and import the application through the command:
 ```
@@ -48,7 +72,7 @@ docker run -d --name vota-votingpaper -p8543:8543 vige/vota-votingpaper
 ```
 Then open `https://votingpaper.vota.vige.it:8543/swagger-ui.html` to connect to the vote application
 
-## Start backend
+### Start backend
 
 To build the application run the command inside the backend folder
 ```
@@ -74,7 +98,7 @@ keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keyst
 ```
 moving the ${your_path} variable to your preferred path where put the keystore and open `https://backend.vota.vige.it:8443/swagger-ui.html` in your browser to connect to the vote application.
 
-### Docker
+#### Docker
 
 If you need a complete environment you can download docker and import the application through the command:
 ```
@@ -86,7 +110,7 @@ docker run -d --name vota-backend -p8443:8443 vige/vota-backend
 ```
 Then open `https://backend.vota.vige.it:8443/swagger-ui.html` to connect to the vote application
 
-## Start frontend
+### Start frontend
 
 Go in the frontend folder and run npm through the following commands:
 ```
@@ -110,7 +134,7 @@ https-serve -s build
 ```
 Now you can connect in the application going to: open `https://frontend.vota.vige.it`
 
-### Docker
+#### Docker
 
 If you need a complete environment you can download docker and import the application through the command:
 ```

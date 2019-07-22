@@ -1,3 +1,4 @@
 theme: jekyll-theme-minimal
 logo: /pages/vota.png
 google_analytics: vote political online polling microservices
+show_downloads: true
