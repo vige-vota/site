@@ -1,4 +1,4 @@
-# VOTA
+# The project
 
 is a web application compatible with mobile devices to vote online. Configure parties and candidates from the console and add the rules according to the electoral law of the country. All voting information is stored in a database
 
@@ -10,7 +10,7 @@ It works with:
 - Spring Boot 2.1.6.RELEASE
 - Docker 18.09.2
 
-## Start the demo
+## Start the application
 
 Download the project from `{{ site.github.zip_url }}`
 
