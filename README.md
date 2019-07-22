@@ -12,7 +12,7 @@ It works with:
 
 ## Start the demo
 
-Download the project from `https://github.com/vige-vota/site/archive/master.zip`
+Download the project from `{{ site.github.zip_url }}`
 
 Install Docker from `https://www.docker.com/get-started`
 
