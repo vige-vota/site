@@ -12,7 +12,7 @@ It works with:
 
 ## Start the application
 
-Download the project from `{{ site.github.zip_url }}`
+Download the Installer from `{{ site.github.zip_url }}`
 
 Install Docker from `https://www.docker.com/get-started`
 
@@ -24,7 +24,7 @@ $IP_ADDRESS  frontend.vota.vige.it
 ```
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
 
-unzip the master.zip, go in the unzipped folder and run:
+unzip the downloaded zip file, go in the unzipped folder and run:
 ```
 docker-compose up
 ```
