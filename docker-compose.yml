@@ -4,8 +4,8 @@ services:
     image: "vige/vota-votingpaper"
     ports:
       - "8543:8543"
-  backend:
-    image: "vige/vota-backend"
+  voting:
+    image: "vige/vota-voting"
     ports:
       - "8443:8443"
   frontend:
