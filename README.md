@@ -21,6 +21,7 @@ Configure your /etc/hosts file the dns names:
 $IP_ADDRESS  votingpaper.vota.vige.it
 $IP_ADDRESS  backend.vota.vige.it
 $IP_ADDRESS  frontend.vota.vige.it
+$IP_ADDRESS  report.vota.vige.it
 ```
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
 
@@ -28,7 +29,7 @@ unzip the downloaded zip file, go in the unzipped folder and run:
 ```
 docker-compose up
 ```
-You are ready to connect to: `https://frontend.vota.vige.it`
+You are ready to connect to: `https://frontend.vota.vige.it` and: `https://report.vota.vige.it`
 
 ## Build and start the single projects
 
@@ -156,6 +157,42 @@ docker run -d --name vota-frontend -p80:5000 vige/vota-frontend:demo
 ```
 Then open `http://localhost` to connect to the vote application
 
+### Start report
+
+Go in the report folder and run npm through the following commands:
+```
+npm install
+npm ci --only=production
+npm run build
+```
+Then create a SSL certificate for the https. Here a sample:
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=report.vota.vige.it"
+```
+and copy it in the home directory under the .http-serve folder.
+
+Now to start the application install the https server:
+```
+sudo npm install -g https-serve
+```
+Then go in the build folder and start with the command:
+```
+https-serve -s build
+```
+Now you can connect in the application going to: open `https://report.vota.vige.it`
+
+#### Docker
+
+If you need a complete environment you can download docker and import the application through the command:
+```
+docker pull vige/vota-report
+```
+To run the image use the command:
+```
+docker run -d --name vota-report -p443:443 -e VOTINGPAPER_URL=https://votingpaper.vota.vige.it:8543/votingPapers -e BACKEND_URL=https://backend.vota.vige.it:8443/vote vige/vota-report
+```
+Then open `https://report.vota.vige.it` to connect to the vote application.
+
 ### DNS configuration
 
 If you work in a production environment you need to configure the dns.
@@ -164,6 +201,7 @@ Add the following DNS in your /etc/hosts file:
 $IP_ADDRESS  votingpaper.vota.vige.it
 $IP_ADDRESS  backend.vota.vige.it
 $IP_ADDRESS  frontend.vota.vige.it
+$IP_ADDRESS  report.vota.vige.it
 ```
 
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
