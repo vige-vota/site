@@ -1,4 +1,4 @@
-# MAKE THE ELECTIONS ONLINE
+# Make the elections ONLINE
 
 VOTA (VOTing Application) is a web application compatible with mobile devices to vote online. Configure parties and candidates from the console and add the rules according to the electoral law of the country. All voting information is stored in a database
 
