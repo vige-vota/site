@@ -111,6 +111,46 @@ docker run -d --name vota-voting -p8443:8443 vige/vota-voting
 ```
 Then open `https://voting.vota.vige.it:8443/swagger-ui.html` to connect to the vote application
 
+### Start history
+
+the rest services to vote
+
+To build the application run the command inside the history folder
+```
+./gradlew build
+```
+Start the Java application with the following commands:
+```
+./gradlew startMongoDb
+```
+to start a MongoDB instance. Then:
+```
+java -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.port=8280
+```
+and open `http://localhost:8280/swagger-ui.html` in your browser to connect to the vote application.
+
+If you need to start it on a environment production:
+```
+java -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.port=8643 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat
+```
+Before to start the HTTPS you need to create a keystore. You can use the following sample:
+```
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=history.vota.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
+```
+moving the ${your_path} variable to your preferred path where put the keystore and open `https://history.vota.vige.it:8643/swagger-ui.html` in your browser to connect to the vote application.
+
+#### Docker
+
+If you need a complete environment you can download docker and import the application through the command:
+```
+docker pull vige/vota-history
+```
+To run the image use the command:
+```
+docker run -d --name vota-history -p8643:8643 vige/vota-history
+```
+Then open `https://history.vota.vige.it:8643/swagger-ui.html` to connect to the vote application
+
 ### Start frontend
 
 Go in the frontend folder and run npm through the following commands:

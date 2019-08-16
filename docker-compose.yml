@@ -8,6 +8,10 @@ services:
     image: "vige/vota-voting"
     ports:
       - "8443:8443"
+  history:
+    image: "vige/vota-history"
+    ports:
+      - "8643:8643"
   frontend:
     image: "vige/vota-frontend"
     ports:
