@@ -22,6 +22,7 @@ $IP_ADDRESS  votingpapers.vota.vige.it
 $IP_ADDRESS  voting.vota.vige.it
 $IP_ADDRESS  frontend.vota.vige.it
 $IP_ADDRESS  report.vota.vige.it
+$IP_ADDRESS  history.vota.vige.it
 ```
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
 
@@ -242,6 +243,7 @@ $IP_ADDRESS  votingpapers.vota.vige.it
 $IP_ADDRESS  voting.vota.vige.it
 $IP_ADDRESS  frontend.vota.vige.it
 $IP_ADDRESS  report.vota.vige.it
+$IP_ADDRESS  history.vota.vige.it
 ```
 
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
