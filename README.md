@@ -239,9 +239,9 @@ docker pull vige/vota-report
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-report -p443:443 vige/vota-report
+docker run -d --name vota-report -p543:443 vige/vota-report
 ```
-Then open `https://vota-report.vige.it` to connect to the vote application.
+Then open `https://vota-report.vige.it:543` to connect to the vote application.
 
 ### DNS configuration
 
