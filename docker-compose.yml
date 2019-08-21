@@ -19,4 +19,4 @@ services:
   report:
     image: "vige/vota-report"
     ports:
-      - "8643:443"
+      - "543:443"
