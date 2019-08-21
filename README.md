@@ -146,7 +146,15 @@ Then open `https://vota-history.vige.it:8643/swagger-ui.html` to connect to the 
 
 ### Start frontend
 
-Go in the frontend folder and run npm through the following commands:
+Go in the report folder and run npm through the following commands:
+```
+npm install
+npm start
+```
+
+And connect to http://localhost:3000
+
+If you need a production environment go in the frontend folder and run npm through the following commands:
 ```
 npm install
 npm ci --only=production
@@ -192,6 +200,15 @@ Then open `http://localhost` to connect to the vote application
 
 ### Start report
 
+Go in the report folder and run npm through the following commands:
+```
+npm install
+npm start
+```
+
+And connect to http://localhost:3000
+
+If you need a production environment go in the frontend folder and run npm through the following commands:
 Go in the report folder and run npm through the following commands:
 ```
 npm install
