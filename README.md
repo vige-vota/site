@@ -146,7 +146,7 @@ Then open `https://vota-history.vige.it:8643/swagger-ui.html` to connect to the 
 
 ### Start frontend
 
-Go in the report folder and run npm through the following commands:
+Go in the frontend folder and run npm through the following commands:
 ```
 npm install
 npm start
