@@ -7,7 +7,7 @@ It works with:
 - JDK 12
 - Gradle 5.6.3
 - React JS 16.9.0
-- Spring Boot 2.1.8.RELEASE
+- Spring Boot 2.1.9.RELEASE
 - Docker 19.03.4
 
 ## Start the application
