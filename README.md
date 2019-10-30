@@ -16,7 +16,7 @@ Download the Installer from `{{ site.github.zip_url }}`
 
 Install Docker from `https://www.docker.com/get-started`
 
-Configure your /etc/hosts file the dns names:
+Configure in your /etc/hosts file the dns names:
 ```
 $IP_ADDRESS  vota-votingpapers.vige.it
 $IP_ADDRESS  vota-voting.vige.it
