@@ -4,11 +4,11 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 
 It works with:
 
-- JDK 12
-- Gradle 5.6.3
+- JDK 13
+- Gradle 6.0.1
 - React JS 16.9.0
-- Spring Boot 2.1.9.RELEASE
-- Docker 19.03.4
+- Spring Boot 2.2.1.RELEASE
+- Docker 19.03.5
 
 ## Start the application
 
