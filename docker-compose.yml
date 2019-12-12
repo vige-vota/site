@@ -1,5 +1,11 @@
 version: '3'
 services:
+  citiesgenerator:
+    image: "vige/cities-generator"
+    ports:
+      - "8743:8443"
+    environment:
+      - COUNTRY=${COUNTRY}
   votingpapers:
     image: "vige/vota-votingpapers"
     ports:

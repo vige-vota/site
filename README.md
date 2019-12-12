@@ -28,9 +28,10 @@ where in $IP_ADDRESS you must choose the ip addresses where are located the serv
 
 unzip the downloaded zip file, go in the unzipped folder and run:
 ```
-docker-compose up
+COUNTRY=${COUNTRY} docker-compose up
 ```
-You are ready to connect to: `https://vota-frontend.vige.it` and: `https://vota-report.vige.it`
+Where COUNTRY is the country where the voting would be start. Actually are available en or it.
+You are ready now to connect to: `https://vota-frontend.vige.it` and: `https://vota-report.vige.it`
 
 ## Build and start the single projects
 
