@@ -18,6 +18,7 @@ Install Docker from https://www.docker.com/get-started
 
 Configure in your /etc/hosts file the dns names:
 ```
+$IP_ADDRESS  cities-generator-service.vige.it
 $IP_ADDRESS  vota-votingpapers.vige.it
 $IP_ADDRESS  vota-voting.vige.it
 $IP_ADDRESS  vota-frontend.vige.it
@@ -253,6 +254,7 @@ Then open `https://vota-report.vige.it:543` to connect to the vote application.
 If you work in a production environment you need to configure the dns.
 Add the following DNS in your /etc/hosts file:
 ```
+$IP_ADDRESS  cities-generator-service.vige.it
 $IP_ADDRESS  vota-votingpapers.vige.it
 $IP_ADDRESS  vota-voting.vige.it
 $IP_ADDRESS  vota-frontend.vige.it
