@@ -180,7 +180,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open `https://vota-frontend.vige.it`
+Now you can connect in the application going to: open https://vota-frontend.vige.it
 
 #### Docker
 
@@ -192,7 +192,7 @@ To run the image use the command:
 ```
 docker run -d --name vota-frontend -p443:443 vige/vota-frontend
 ```
-Then open `https://vota-frontend.vige.it` to connect to the vote application.
+Then open https://vota-frontend.vige.it to connect to the vote application.
 
 If you need only to start a demo execute:
 ```
@@ -202,7 +202,7 @@ and then:
 ```
 docker run -d --name vota-frontend -p80:5000 vige/vota-frontend:demo
 ```
-Then open `http://localhost` to connect to the vote application
+Then open http://localhost to connect to the vote application
 
 ### Start report
 
@@ -235,7 +235,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open `https://vota-report.vige.it`
+Now you can connect in the application going to: open https://vota-report.vige.it
 
 #### Docker
 
@@ -247,7 +247,10 @@ To run the image use the command:
 ```
 docker run -d --name vota-report -p543:443 vige/vota-report
 ```
-Then open `https://vota-report.vige.it:543` to connect to the vote application.
+Then open https://vota-report.vige.it:543 to connect to the daily runtime vote application, else you can choose the date of the elections so:
+https://vota-report.vige.it:543/${MM-dd-yyyy}.
+For example:
+20 December 2019 - https://vota-report.vige.it:543/12-20-2019
 
 ### DNS configuration
 
