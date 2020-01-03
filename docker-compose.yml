@@ -18,11 +18,3 @@ services:
     image: "vige/vota-history"
     ports:
       - "8643:8643"
-  frontend:
-    image: "vige/vota-frontend"
-    ports:
-      - "443:443"
-  report:
-    image: "vige/vota-report"
-    ports:
-      - "543:443"
