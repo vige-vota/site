@@ -21,8 +21,6 @@ Configure in your /etc/hosts file the dns names:
 $IP_ADDRESS  cities-generator-service.vige.it
 $IP_ADDRESS  vota-votingpapers.vige.it
 $IP_ADDRESS  vota-voting.vige.it
-$IP_ADDRESS  vota-frontend.vige.it
-$IP_ADDRESS  vota-report.vige.it
 $IP_ADDRESS  vota-history.vige.it
 ```
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
@@ -32,7 +30,7 @@ unzip the downloaded zip file, go in the unzipped folder and run:
 COUNTRY=${COUNTRY} docker-compose up
 ```
 Where COUNTRY is the country where the voting would be start. Actually are available en or it.
-You are ready now to connect to: https://vota-frontend.vige.it and: https://vota-report.vige.it
+You are ready now to connect to: https://vige-vota.github.io/frontend and: https://vige-vota.github.io/report
 
 ## Build and start the single projects
 
@@ -164,7 +162,7 @@ npm run build
 ```
 Then create a SSL certificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=vota-frontend.vige.it"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
 ```
 and copy it in the home directory under the .http-serve folder.
 
@@ -176,7 +174,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open https://vota-frontend.vige.it
+Now you can connect in the application going to: open https://localhost
 
 ## Online application
 
@@ -202,7 +200,7 @@ npm run build
 ```
 Then create a SSL certificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=vota-report.vige.it"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
 ```
 and copy it in the home directory under the .http-serve folder.
 
@@ -214,7 +212,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open https://vota-report.vige.it
+Now you can connect in the application going to: open https://localhost
 
 ## Online application
 
@@ -234,8 +232,6 @@ Add the following DNS in your /etc/hosts file:
 $IP_ADDRESS  cities-generator-service.vige.it
 $IP_ADDRESS  vota-votingpapers.vige.it
 $IP_ADDRESS  vota-voting.vige.it
-$IP_ADDRESS  vota-frontend.vige.it
-$IP_ADDRESS  vota-report.vige.it
 $IP_ADDRESS  vota-history.vige.it
 ```
 
