@@ -6,6 +6,10 @@ services:
       - "8743:8443"
     environment:
       - COUNTRY=${COUNTRY}
+  auth:
+    image: "vige/vota-auth"
+    ports:
+      - "8843:8843"
   votingpapers:
     image: "vige/vota-votingpapers"
     ports:
