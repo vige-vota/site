@@ -5,10 +5,10 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 It works with:
 
 - JDK 13
-- Gradle 6.0.1
-- React JS 16.9.0
-- Spring Boot 2.2.1.RELEASE
-- Docker 19.03.5
+- Gradle 6.6.1
+- React JS 16.13.1
+- Spring Boot 2.3.4.RELEASE
+- Docker 19.03.13
 
 ## Start the application
 
@@ -47,7 +47,7 @@ Start the Java application with the following commands:
 ```
 java -jar build/libs/votingpapers-1.0.0-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev
 ```
-and open http://localhost:8180/swagger-ui.html in your browser to connect to the vote application.
+and open http://localhost:8180/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
@@ -57,7 +57,7 @@ Before to start the HTTPS you need to create a keystore. You can use the followi
 ```
 keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-votingpapers.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-votingpapers.vige.it:8543/swagger-ui.html in your browser to connect to the vote application.
+moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-votingpapers.vige.it:8543/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -69,7 +69,7 @@ To run the image use the command:
 ```
 docker run -d --name vota-votingpapers -p8543:8543 vige/vota-votingpapers
 ```
-Then open https://vota-votingpapers.vige.it:8543/swagger-ui.html to connect to the vote application
+Then open https://vota-votingpapers.vige.it:8543/swagger-ui/index.html to connect to the vote application
 
 ### Start voting
 
@@ -81,7 +81,7 @@ Start the Java application with the following commands:
 ```
 java -jar build/libs/voting-1.0.0-SNAPSHOT.jar --server.port=8080 --spring.profiles.active=dev
 ```
-and open http://localhost:8080/swagger-ui.html in your browser to connect to the vote application.
+and open http://localhost:8080/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
@@ -91,7 +91,7 @@ Before to start the HTTPS you need to create a keystore. You can use the followi
 ```
 keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-voting.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-voting.vige.it:8443/swagger-ui.html in your browser to connect to the vote application.
+moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-voting.vige.it:8443/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -103,7 +103,7 @@ To run the image use the command:
 ```
 docker run -d --name vota-voting -p8443:8443 vige/vota-voting
 ```
-Then open https://vota-voting.vige.it:8443/swagger-ui.html to connect to the vote application
+Then open https://vota-voting.vige.it:8443/swagger-ui/index.html to connect to the vote application
 
 ### Start history
 
@@ -121,7 +121,7 @@ to start a MongoDB instance. Then:
 ```
 java -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.port=8280 --spring.profiles.active=dev
 ```
-and open http://localhost:8280/swagger-ui.html in your browser to connect to the vote application.
+and open http://localhost:8280/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
@@ -131,7 +131,7 @@ Before to start the HTTPS you need to create a keystore. You can use the followi
 ```
 keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-history.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
 ```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-history.vige.it:8643/swagger-ui.html in your browser to connect to the vote application.
+moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-history.vige.it:8643/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -143,7 +143,7 @@ To run the image use the command:
 ```
 docker run -d --name vota-history -p8643:8643 vige/vota-history
 ```
-Then open https://vota-history.vige.it:8643/swagger-ui.html to connect to the vote application
+Then open https://vota-history.vige.it:8643/swagger-ui/index.html to connect to the vote application
 
 ### Start frontend
 
@@ -182,7 +182,7 @@ https-serve -s build
 ```
 Now you can connect in the application going to: open https://localhost
 
-## Online application
+#### Online application
 
 You can see the updated online application simply connecting to:
 Then open https://vige-vota.github.io/frontend
@@ -225,7 +225,7 @@ https-serve -s build
 ```
 Now you can connect in the application going to: open https://localhost
 
-## Online application
+#### Online application
 
 You can see the updated online application simply connecting to:
 Then open https://vige-vota.github.io/report
@@ -234,6 +234,97 @@ else you can choose the date of the elections so:
 https://vige-vota.github.io/report?date=${MM-dd-yyyy}.
 For example:
 29 December 2019 - https://vige-vota.github.io/report?date=12-29-2019
+
+### Start auth
+
+In development mode:
+
+    mvn install -Pdevelopment,prepare-keycloak
+    
+In production mode:
+
+    mvn install -Pproduction,prepare-keycloak
+    
+If you want to start the WildFly prepared instance and execute the application:
+
+    mvn install -Pproduction,runtime-keycloak -Dkeycloak.url=${keycloak.url}
+    
+Where ${keycloak.url} is the host name of the keycloak server shown in the below guide. Or for the Keycloak server:
+
+    mvn install -Pproduction,runtime-keycloak
+   
+From the 1.2.0 version we need keycloak to manage the users. To prepare a keycloak standalone use the following command:
+
+    mvn install -Pdevelopment,prepare-keycloak
+    
+and to start the prepared keycloak instance:
+
+    mvn install -Pdevelopment,runtime-keycloak
+    
+This command import default users and development configurations. To prepare keycloak in a clean production environment you can use:
+
+    mvn install -Pproduction,prepare-keycloak
+    
+and to start the prepared keycloak instance:
+
+    mvn install -Pproduction,runtime-keycloak -Dvoting.url=${voting.url} -Dvotingpapers.url=${votingpapers.url} -Dhistory.url=${history.url}
+    
+Where ${voting.url}, ${votingpapers.url} and ${history.url} are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
+To create new users in WildFly:
+
+$JBOSS_HOME/bin/add_user.sh
+
+    What type of user do you wish to add? 
+     a) Management User (mgmt-users.properties) 
+     b) Application User (application-users.properties)
+    (a): b
+
+Enter the details of the new user to add.
+Realm (ApplicationRealm) : 
+Username : user2
+Password : password2
+Re-enter Password : password2
+What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : users
+The username 'admin' is easy to guess
+Are you sure you want to add user 'admin' yes/no? yes
+
+to test the rest api with junit:
+
+    deploy the rest api in a server
+    mvn -Prest-keycloak-test test
+
+To debug the application using Eclipse you can put this parameter:
+
+    mvn -Dmaven.surefire.debug test
+
+It will start on the 5005 port.
+
+The tests are done using Chrome 84.0.4147.135 (64-bit) on WildFly 20.0.1.Final
+
+#### Docker
+
+To install the docker image run the command:
+
+    docker pull vige/vota-auth
+    
+To run the image run the command:
+
+    docker run -p 8843:8843 --name vota-auth vige/vota-auth
+    
+If you want start it in background mode:
+
+    docker run -p 8843:8843 -d --name vota-auth vige/vota-auth
+
+Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
+
+    docker run -p 8843:8843 -e VOTING_URL=${voting.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e HISTORY_URL=${history.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
+    
+If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
+
+    docker run -p 8843:8843 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
+
+If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8180/auth with root/gtn in the keycloak webapp.
+If you want connect in the keycloak webapp as superuser connect to it with admin/admin
 
 ### DNS configuration
 
