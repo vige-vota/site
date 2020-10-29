@@ -53,11 +53,6 @@ If you need to start it on a environment production:
 ```
 java -jar build/libs/votingpapers-1.0.0-SNAPSHOT.jar --server.port=8543 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat --spring.profiles.active=prod
 ```
-Before to start the HTTPS you need to create a keystore. You can use the following sample:
-```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-votingpapers.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
-```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-votingpapers.vige.it:8543/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -87,11 +82,6 @@ If you need to start it on a environment production:
 ```
 java -jar build/libs/voting-1.0.0-SNAPSHOT.jar --server.port=8443 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat --spring.profiles.active=prod
 ```
-Before to start the HTTPS you need to create a keystore. You can use the following sample:
-```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-voting.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
-```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-voting.vige.it:8443/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -127,11 +117,6 @@ If you need to start it on a environment production:
 ```
 java -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.port=8643 --server.ssl.key-store=/${your_path}/keystore.p12 --server.ssl.key-store-password=secret --server.ssl.keyStoreType=PKCS12 --server.ssl.keyAlias=tomcat --spring.profiles.active=prod
 ```
-Before to start the HTTPS you need to create a keystore. You can use the following sample:
-```
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore /${your_path}/keystore.p12 -validity 3650 -dname "CN=vota-history.vige.it, OU=Vige, O=Vige, L=Rome, S=Italy, C=IT" -storepass secret -keypass secret
-```
-moving the ${your_path} variable to your preferred path where put the keystore and open https://vota-history.vige.it:8643/swagger-ui/index.html in your browser to connect to the vote application.
 
 #### Docker
 
@@ -245,10 +230,6 @@ In production mode:
 
     mvn install -Pproduction,prepare-keycloak
     
-If you want to start the WildFly prepared instance and execute the application:
-
-    mvn install -Pproduction,runtime-keycloak -Dkeycloak.url=${keycloak.url}
-    
 Where ${keycloak.url} is the host name of the keycloak server shown in the below guide. Or for the Keycloak server:
 
     mvn install -Pproduction,runtime-keycloak
@@ -265,9 +246,9 @@ This command import default users and development configurations. To prepare key
 
     mvn install -Pproduction,prepare-keycloak
     
-and to start the prepared keycloak instance:
+and to start the prepared keycloak instance here a sample:
 
-    mvn install -Pproduction,runtime-keycloak -Dvoting.url=${voting.url} -Dvotingpapers.url=${votingpapers.url} -Dhistory.url=${history.url}
+    mvn install -Pproduction,runtime-keycloak -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643
     
 Where ${voting.url}, ${votingpapers.url} and ${history.url} are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
 To create new users in WildFly:
