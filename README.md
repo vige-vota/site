@@ -224,33 +224,23 @@ For example:
 
 In development mode:
 
-    mvn install -Pdevelopment,prepare-keycloak
+    mvn install -Pdevelopment
+    mvn package -Pdevelopment,prepare-keycloak
     
 In production mode:
 
-    mvn install -Pproduction,prepare-keycloak
-    
-Where ${keycloak.url} is the host name of the keycloak server shown in the below guide. Or for the Keycloak server:
-
-    mvn install -Pproduction,runtime-keycloak
-   
-From the 1.2.0 version we need keycloak to manage the users. To prepare a keycloak standalone use the following command:
-
-    mvn install -Pdevelopment,prepare-keycloak
+    mvn install -Pproduction
+    mvn package -Pproduction,prepare-keycloak
     
 and to start the prepared keycloak instance:
 
     mvn install -Pdevelopment,runtime-keycloak
     
-This command import default users and development configurations. To prepare keycloak in a clean production environment you can use:
-
-    mvn install -Pproduction,prepare-keycloak
-    
-and to start the prepared keycloak instance here a sample:
+Or for the production:
 
     mvn install -Pproduction,runtime-keycloak -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643
     
-Where ${voting.url}, ${votingpapers.url} and ${history.url} are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
+Where voting.url, votingpapers.url and history.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
 To create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
