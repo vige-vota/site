@@ -10,10 +10,6 @@ services:
     image: "vige/vota-auth"
     ports:
       - "8843:8843"
-    environment:
-      - VOTINGPAPERS_URL=https://vota-votingpapers.vige.it:8543
-      - VOTING_URL=https://vota-voting.vige.it:8443
-      - HISTORY_URL=https://vota-history.vige.it:8643
   votingpapers:
     image: "vige/vota-votingpapers"
     ports:
