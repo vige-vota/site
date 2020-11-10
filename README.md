@@ -9,6 +9,7 @@ It works with:
 - React JS 16.13.1
 - Spring Boot 2.3.4.RELEASE
 - Docker 19.03.13
+- Keycloak 11.0.3
 
 ## Start the application
 
