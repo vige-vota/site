@@ -5,6 +5,9 @@ services:
     ports:
       - "8743:8443"
     environment:
+      - REALM=vota-domain
+      - AUTHURL=https://vota-auth.vige.it:8843/auth
+      - RESOURCE=citiesGenerator
       - COUNTRY=${COUNTRY}
   auth:
     image: "vige/vota-auth"

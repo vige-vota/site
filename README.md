@@ -240,9 +240,9 @@ and to start the prepared keycloak instance:
     
 Or for the production:
 
-    mvn install -Pproduction,runtime-keycloak -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643 -Dfrontend.url=https://localhost
+    mvn install -Pproduction,runtime-keycloak -Dcitiesgenerator.url=https://cities-generator-service.vige.it:8743 -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643 -Dfrontend.url=https://localhost
     
-Where voting.url, votingpapers.url, history.url and frontend.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
+Where citiesgenerator.url, votingpapers.url, voting.url, history.url and frontend.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
 To create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
@@ -290,7 +290,7 @@ If you want start it in background mode:
 
 Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
 
-    docker run -p 8843:8843 -e VOTING_URL=${voting.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
+    docker run -p 8843:8843 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
     
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
 
