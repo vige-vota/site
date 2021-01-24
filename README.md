@@ -9,7 +9,7 @@ It works with:
 - React JS 16.13.1
 - Spring Boot 2.4.1
 - Docker 20.10.00
-- Keycloak 12.0.1
+- Keycloak 12.0.2
 - Cities generator 1.1.3
 
 ## Start the application
