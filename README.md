@@ -33,7 +33,7 @@ unzip the downloaded zip file, go in the unzipped folder and run:
 COUNTRY=${COUNTRY} docker-compose up
 ```
 Where COUNTRY is the country where the voting would be start. Actually are available en or it.
-You are ready now to connect to: https://vige-vota.github.io/frontend and: https://vige-vota.github.io/report
+You are ready now to connect to: http://vota-frontend.vige.it and: http://vota-report.vige.it
 
 ## Build and start the single projects
 
@@ -142,7 +142,7 @@ npm start
 
 And connect to http://localhost:3000
 
-You would update the online application in https://vige-vota.github.io/frontend url. Simply digit in your frontend folder the command:
+You would update the online application in http://vota-frontend.vige.it url. Simply digit in your frontend folder the command:
 ```
 npm run deploy
 ```
@@ -172,7 +172,7 @@ Now you can connect in the application going to: open https://localhost
 #### Online application
 
 You can see the updated online application simply connecting to:
-Then open https://vige-vota.github.io/frontend
+Then open http://vota-frontend.vige.it
 
 ### Start report
 
@@ -184,7 +184,7 @@ npm start
 
 And connect to http://localhost:3000
 
-You would update the online application in https://vige-vota.github.io/report url. Simply digit in your report folder the command:
+You would update the online application in http://vota-report.vige.it url. Simply digit in your report folder the command:
 ```
 npm run deploy
 ```
@@ -218,9 +218,9 @@ You can see the updated online application simply connecting to:
 Then open https://vige-vota.github.io/report
 
 else you can choose the date of the elections so:
-https://vige-vota.github.io/report?date=${yyyy-MM-dd}.
+http://vota-report.vige.it?date=${yyyy-MM-dd}.
 For example:
-29 December 2019 - https://vige-vota.github.io/report?date=2019-12-29
+29 December 2019 - http://vota-report.vige.it?date=2019-12-29
 
 ### Start auth
 
@@ -282,21 +282,21 @@ To install the docker image run the command:
     
 To run the image run the command:
 
-    docker run -p 8843:8843 --name vota-auth vige/vota-auth
+    docker run -p 8480:8480 --name vota-auth vige/vota-auth
     
 If you want start it in background mode:
 
-    docker run -p 8843:8843 -d --name vota-auth vige/vota-auth
+    docker run -p 8480:8480 -d --name vota-auth vige/vota-auth
 
 Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
 
-    docker run -p 8843:8843 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
+    docker run -p 8480:8480 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
     
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
 
-    docker run -p 8843:8843 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
+    docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
 
-If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8180/auth with root/gtn in the keycloak webapp.
+If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8480/auth with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with admin/admin
 
 ### DNS configuration
