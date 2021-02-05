@@ -215,7 +215,7 @@ Now you can connect in the application going to: open https://localhost
 #### Online application
 
 You can see the updated online application simply connecting to:
-Then open https://vige-vota.github.io/report
+Then open http://vota-report.vige.it
 
 else you can choose the date of the elections so:
 http://vota-report.vige.it?date=${yyyy-MM-dd}.
