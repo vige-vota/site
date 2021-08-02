@@ -296,7 +296,7 @@ If you need a different language by the english you can set the i18 variable. A 
 
     docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
 
-If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8480/auth with root/gtn in the keycloak webapp.
+If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8480/auth/admin/vota-domain/console with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with admin/admin
 
 ### DNS configuration
