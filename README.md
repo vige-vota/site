@@ -4,13 +4,13 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 
 It works with:
 
-- JDK 13 / 15 / 16
-- Gradle 6.7.1
+- JDK 13 / 17
+- Gradle 7.3.1
 - React JS 16.13.1
 - Spring Boot 2.4.4
 - Docker 20.10.00
-- Keycloak 12.0.4
-- Cities generator 1.1.6
+- Keycloak 15.0.2
+- Cities generator 1.1.8
 
 ## Start the application
 
@@ -272,7 +272,7 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
-The tests are done using Chrome 84.0.4147.135 (64-bit) on WildFly 20.0.1.Final
+The tests are done using Chrome 96.0.4664.93 (64-bit) on WildFly 24.0.1.Final
 
 #### Docker
 
