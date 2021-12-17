@@ -33,7 +33,9 @@ unzip the downloaded zip file, go in the unzipped folder and run:
 COUNTRY=${COUNTRY} docker-compose up
 ```
 Where COUNTRY is the country where the voting would be start. Actually are available en or it.
-You are ready now to connect to: http://vota-frontend.vige.it and: http://vota-report.vige.it
+You are ready now to connect to: [http://vota-frontend.vige.it](http://vota-frontend.vige.it) and: [http://vota-report.vige.it](http://vota-report.vige.it)
+
+If you use Chrome, by default you have a CORS protection for the internal lan servers. So you need to disable the internal network protection clicking on [chrome://flags/#block-insecure-private-network-requests](chrome://flags/#block-insecure-private-network-requests) and disabling the first voice
 
 ## Build and start the single projects
 
@@ -64,9 +66,9 @@ docker pull vige/vota-votingpapers
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-votingpapers -p8543:8543 vige/vota-votingpapers
+docker run -d --name vota-votingpapers -p8180:8180 vige/vota-votingpapers
 ```
-Then open https://vota-votingpapers.vige.it:8543/swagger-ui/index.html to connect to the vote application
+Then open [http://vota-votingpapers.vige.it:8180/swagger-ui/index.html](http://vota-votingpapers.vige.it:8180/swagger-ui/index.html) to connect to the vote application
 
 ### Start voting
 
@@ -93,9 +95,9 @@ docker pull vige/vota-voting
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-voting -p8443:8443 vige/vota-voting
+docker run -d --name vota-voting -p8080:8080 vige/vota-voting
 ```
-Then open https://vota-voting.vige.it:8443/swagger-ui/index.html to connect to the vote application
+Then open [http://vota-voting.vige.it:8080/swagger-ui/index.html](http://vota-voting.vige.it:8080/swagger-ui/index.html) to connect to the vote application
 
 ### Start history
 
@@ -128,9 +130,9 @@ docker pull vige/vota-history
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-history -p8643:8643 vige/vota-history
+docker run -d --name vota-history -p8280:8280 vige/vota-history
 ```
-Then open https://vota-history.vige.it:8643/swagger-ui/index.html to connect to the vote application
+Then open [http://vota-history.vige.it:8280/swagger-ui/index.html](http://vota-history.vige.it:8280/swagger-ui/index.html) to connect to the vote application
 
 ### Start frontend
 
@@ -140,9 +142,9 @@ npm install
 npm start
 ```
 
-And connect to http://localhost:3000
+And connect to [http://localhost:3000](http://localhost:3000)
 
-You would update the online application in http://vota-frontend.vige.it url. Simply digit in your frontend folder the command:
+You would update the online application in [http://vota-frontend.vige.it](http://vota-frontend.vige.it) url. Simply digit in your frontend folder the command:
 ```
 npm run deploy
 ```
@@ -167,12 +169,12 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open https://localhost
+Now you can connect in the application going to: open [https://localhost](https://localhost)
 
 #### Online application
 
 You can see the updated online application simply connecting to:
-Then open http://vota-frontend.vige.it
+Then open [http://vota-frontend.vige.it](http://vota-frontend.vige.it)
 
 ### Start report
 
@@ -182,9 +184,9 @@ npm install
 npm start
 ```
 
-And connect to http://localhost:3000
+And connect to [http://localhost:3000](http://localhost:3000)
 
-You would update the online application in http://vota-report.vige.it url. Simply digit in your report folder the command:
+You would update the online application in [http://vota-report.vige.it](http://vota-report.vige.it) url. Simply digit in your report folder the command:
 ```
 npm run deploy
 ```
@@ -215,12 +217,12 @@ Now you can connect in the application going to: open https://localhost
 #### Online application
 
 You can see the updated online application simply connecting to:
-Then open http://vota-report.vige.it
+Then open [http://vota-report.vige.it](http://vota-report.vige.it)
 
 else you can choose the date of the elections so:
 http://vota-report.vige.it?date=${yyyy-MM-dd}.
 For example:
-29 December 2019 - http://vota-report.vige.it?date=2019-12-29
+29 December 2019 - [http://vota-report.vige.it?date=2019-12-29](http://vota-report.vige.it?date=2019-12-29)
 
 ### Start auth
 
@@ -296,7 +298,7 @@ If you need a different language by the english you can set the i18 variable. A 
 
     docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
 
-If you want to configure, add votes, classes and new users or approve users connect to: http://localhost:8480/auth/admin/vota-domain/console with root/gtn in the keycloak webapp.
+If you want to configure, add votes, classes and new users or approve users connect to: [http://localhost:8480/auth/admin/vota-domain/console](http://localhost:8480/auth/admin/vota-domain/console) with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with admin/admin
 
 ### DNS configuration
