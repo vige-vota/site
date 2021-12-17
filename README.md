@@ -14,9 +14,9 @@ It works with:
 
 ## Start the application
 
-Download the Installer from `{{ site.github.zip_url }}`
+Download the Installer from [`{{ site.github.zip_url }}`](`{{ site.github.zip_url }}`)
 
-Install Docker from https://www.docker.com/get-started
+Install Docker from [https://www.docker.com/get-started](https://www.docker.com/get-started)
 
 Configure in your /etc/hosts file the dns names:
 ```
