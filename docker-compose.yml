@@ -1,7 +1,7 @@
 version: '3'
 services:
   cities-generator-service.vige.it:
-    image: "vige/cities-generator"
+    image: "vige/cities-generator:1.1.9"
     ports:
       - "8380:8080"
     environment:
@@ -10,18 +10,18 @@ services:
       - RESOURCE=citiesGenerator
       - COUNTRY=${COUNTRY}
   vota-auth.vige.it:
-    image: "vige/vota-auth"
+    image: "vige/vota-auth:1.0.0"
     ports:
       - "8480:8480"
   vota-votingpapers.vige.it:
-    image: "vige/vota-votingpapers"
+    image: "vige/vota-votingpapers:1.0.0"
     ports:
       - "8180:8180"
   vota-voting.vige.it:
-    image: "vige/vota-voting"
+    image: "vige/vota-voting:1.0.0"
     ports:
       - "8080:8080"
   vota-history.vige.it:
-    image: "vige/vota-history"
+    image: "vige/vota-history:1.0.0"
     ports:
       - "8280:8280"
