@@ -7,10 +7,10 @@ It works with:
 - JDK 18
 - Gradle 7.4.2
 - React JS 16.13.1
-- Spring Boot 2.5.13
+- Spring Boot 2.7.1
 - Docker 20.10.00
 - Keycloak 15.1.1
-- Cities generator 1.1.9
+- Cities generator 1.2.0
 
 ## Start the application
 
