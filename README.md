@@ -229,12 +229,12 @@ For example:
 In development mode:
 
     mvn install -Pdevelopment
-    mvn package -Pdevelopment,prepare-keycloak
+    mvn install -Pdevelopment,prepare-keycloak
     
 In production mode:
 
     mvn install -Pproduction
-    mvn package -Pproduction,prepare-keycloak
+    mvn install -Pproduction,prepare-keycloak
     
 and to start the prepared keycloak instance:
 
