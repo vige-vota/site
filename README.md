@@ -4,13 +4,13 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 
 It works with:
 
-- JDK 13 / 15
-- Gradle 7.3.1
-- React JS 16.13.1
-- Spring Boot 2.4.4
-- Docker 20.10.00
-- Keycloak 15.0.2
-- Cities generator 1.1.9
+- JDK 18/19
+- Gradle 7.5.1
+- React JS 18.2.0
+- Spring Boot 2.7.1
+- Docker 20.10.17
+- Keycloak 15.1.1
+- Cities generator 1.2.0
 
 ## Start the application
 
@@ -49,13 +49,13 @@ To build the application run the command inside the votingpapers folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/votingpapers-1.0.0-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev
+java -jar build/libs/votingpapers-1.1.0-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev
 ```
 and open http://localhost:8180/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.0.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -78,13 +78,13 @@ To build the application run the command inside the voting folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/voting-1.0.0-SNAPSHOT.jar --server.port=8080 --spring.profiles.active=dev
+java -jar build/libs/voting-1.1.0-SNAPSHOT.jar --server.port=8080 --spring.profiles.active=dev
 ```
 and open http://localhost:8080/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.0.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -113,13 +113,13 @@ Start the Java application with the following commands:
 ```
 to start a MongoDB instance. Then:
 ```
-java -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.port=8280 --spring.profiles.active=dev
+java -jar build/libs/history-1.1.0-SNAPSHOT.jar --server.port=8280 --spring.profiles.active=dev
 ```
 and open http://localhost:8280/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.0.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -229,12 +229,12 @@ For example:
 In development mode:
 
     mvn install -Pdevelopment
-    mvn package -Pdevelopment,prepare-keycloak
+    mvn install -Pdevelopment,prepare-keycloak
     
 In production mode:
 
     mvn install -Pproduction
-    mvn package -Pproduction,prepare-keycloak
+    mvn install -Pproduction,prepare-keycloak
     
 and to start the prepared keycloak instance:
 
