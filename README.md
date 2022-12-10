@@ -28,14 +28,14 @@ $IP_ADDRESS  vota-history.vige.it
 ```
 where in $IP_ADDRESS you must choose the ip addresses where are located the servers
 
-unzip the downloaded zip file, go in the unzipped folder and run:
+unzip the downloaded zip file, go in the unzipped folder, choose the dev or prod folder according your preferred mode and run:
 ```
 COUNTRY=${COUNTRY} docker-compose up
 ```
 Where COUNTRY is the country where the voting would be start. Actually are available en or it.
-You are ready now to connect to: [http://vota-frontend.vige.it](http://vota-frontend.vige.it) and: [http://vota-report.vige.it](http://vota-report.vige.it)
+You are ready now to connect to: [https://vota-frontend.vige.it](https://vota-frontend.vige.it) and: [https://vota-report.vige.it](https://vota-report.vige.it)
 
-If you use Chrome, by default you have a CORS protection for the internal lan servers. So you need to disable the internal network protection clicking on [chrome://flags/#block-insecure-private-network-requests](chrome://flags/#block-insecure-private-network-requests) and disabling the first voice
+If you use Chrome in a dev mode, by default you have a CORS protection for the internal lan servers. So you need to disable the internal network protection clicking on [chrome://flags/#block-insecure-private-network-requests](chrome://flags/#block-insecure-private-network-requests) and disabling the first voice
 
 ## Build and start the single projects
 
@@ -276,30 +276,65 @@ It will start on the 5005 port.
 
 The tests are done using Chrome 96.0.4664.93 (64-bit) on WildFly 24.0.1.Final
 
-#### Docker
+#### Docker develop image
+------------
 
 To install the docker image run the command:
-
+```
     docker pull vige/vota-auth
-    
+```
 To run the image run the command:
-
+```
     docker run -p 8480:8480 --name vota-auth vige/vota-auth
-    
+```
 If you want start it in background mode:
-
+```
     docker run -p 8480:8480 -d --name vota-auth vige/vota-auth
-
+```
 Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
-
-    docker run -p 8480:8480 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -e KEYCLOAK_URL=${keycloak.url} -d --name vota-auth vige/vota-auth
-    
+```
+    docker run -p 8480:8480 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
+```
+Here a sample how fill the variables:
+```
+    docker run -p 8480:8480 -e CITIESGENERATOR_URL=http://cities-generator-service.vige.it:8380 -e VOTINGPAPERS_URL=http://vota-votingpapers.vige.it:8180 -e VOTING_URL=http://vota-voting.vige.it:8080 -e HISTORY_URL=http://vota-history.vige.it:8280 -e FRONTEND_URL=http://vota-frontend.vige.it -e REPORT_URL=http://vota-report.vige.it -d --name vota-auth vige/vota-auth
+```
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
-
-    docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -d --name vota-auth vige/vota-auth
-
+```
+    docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
+```
 If you want to configure, add votes, classes and new users or approve users connect to: [http://localhost:8480/auth/admin/vota-domain/console](http://localhost:8480/auth/admin/vota-domain/console) with root/gtn in the keycloak webapp.
-If you want connect in the keycloak webapp as superuser connect to it with admin/admin
+If you want connect in the keycloak webapp as superuser connect to it with root/gtn
+
+#### Docker production image
+------------
+
+To install the docker image run the command:
+```
+    docker pull vige/vota-auth
+```
+To run the image run the command:
+```
+    docker run -p 8843:8843 --name vota-auth vige/vota-auth
+```
+If you want start it in background mode:
+```
+    docker run -p 8843:8843 -d --name vota-auth vige/vota-auth
+```
+Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
+```
+    docker run -p 8843:8843 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
+```
+Here a sample how fill the variables:
+```
+    docker run -p 8843:8843 -e CITIESGENERATOR_URL=https://cities-generator-service.vige.it:8743 -e VOTINGPAPERS_URL=https://vota-votingpapers.vige.it:8543 -e VOTING_URL=https://vota-voting.vige.it:8443 -e HISTORY_URL=https://vota-history.vige.it:8643 -e FRONTEND_URL=https://vota-frontend.vige.it -e REPORT_URL=https://vota-report.vige.it -d --name vota-auth vige/vota-auth
+```
+If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
+```
+    docker run -p 8843:8843 -e LC_ALL=it_IT.UTF-8 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
+```
+If you want to configure, add votes, classes and new users or approve users connect to: [https://localhost:8843/auth/admin/vota-domain/console](https://localhost:8843/auth/admin/vota-domain/console) with root/gtn in the keycloak webapp.
+If you want connect in the keycloak webapp as superuser connect to it with root/gtn
 
 ### DNS configuration
 
