@@ -4,13 +4,13 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 
 It works with:
 
-- JDK 18/19
-- Gradle 7.5.1
+- JDK 19
+- Gradle 7.6
 - React JS 18.2.0
 - Spring Boot 2.7.1
 - Docker 20.10.17
-- Keycloak 15.1.1
-- Cities generator 1.2.0
+- Keycloak 20.10.17
+- Cities generator 1.2.1
 
 ## Start the application
 
@@ -228,53 +228,13 @@ For example:
 
 In development mode:
 
-    mvn install -Pdevelopment
-    mvn install -Pdevelopment,prepare-keycloak
+    mvn install -Pdevelopment -Dcitiesgenerator.url=http://cities-generator-service.vige.it:8380 -Dvotingpapers.url=http://vota-votingpapers.vige.it:8180 -Dvoting.url=http://vota-voting.vige.it:8080 -Dhistory.url=http://vota-history.vige.it:8280 -Dfrontend.url=http://vota-frontend.vige.it:3000
+    
+Where citiesgenerator.url, votingpapers.url, voting.url, history.url, frontend.url and report.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
     
 In production mode:
 
-    mvn install -Pproduction
-    mvn install -Pproduction,prepare-keycloak
-    
-and to start the prepared keycloak instance:
-
-    mvn install -Pdevelopment,runtime-keycloak
-    
-Or for the production:
-
-    mvn install -Pproduction,runtime-keycloak -Dcitiesgenerator.url=https://cities-generator-service.vige.it:8743 -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643 -Dfrontend.url=https://localhost -Dreport.url=https://localhost:444
-    
-Where citiesgenerator.url, votingpapers.url, voting.url, history.url, frontend.url and report.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
-To create new users in WildFly:
-
-$JBOSS_HOME/bin/add_user.sh
-
-    What type of user do you wish to add? 
-     a) Management User (mgmt-users.properties) 
-     b) Application User (application-users.properties)
-    (a): b
-
-Enter the details of the new user to add.
-Realm (ApplicationRealm) : 
-Username : user2
-Password : password2
-Re-enter Password : password2
-What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : users
-The username 'admin' is easy to guess
-Are you sure you want to add user 'admin' yes/no? yes
-
-to test the rest api with junit:
-
-    deploy the rest api in a server
-    mvn -Prest-keycloak-test test
-
-To debug the application using Eclipse you can put this parameter:
-
-    mvn -Dmaven.surefire.debug test
-
-It will start on the 5005 port.
-
-The tests are done using Chrome 96.0.4664.93 (64-bit) on WildFly 24.0.1.Final
+    mvn install -Pproduction -Dcitiesgenerator.url=https://cities-generator-service.vige.it:8743 -Dvotingpapers.url=https://vota-votingpapers.vige.it:8543 -Dvoting.url=https://vota-voting.vige.it:8443 -Dhistory.url=https://vota-history.vige.it:8643 -Dfrontend.url=https://vota-frontend.vige.it
 
 #### Docker develop image
 ------------
@@ -291,19 +251,7 @@ If you want start it in background mode:
 ```
     docker run -p 8480:8480 -d --name vota-auth vige/vota-auth
 ```
-Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
-```
-    docker run -p 8480:8480 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
-```
-Here a sample how fill the variables:
-```
-    docker run -p 8480:8480 -e CITIESGENERATOR_URL=http://cities-generator-service.vige.it:8380 -e VOTINGPAPERS_URL=http://vota-votingpapers.vige.it:8180 -e VOTING_URL=http://vota-voting.vige.it:8080 -e HISTORY_URL=http://vota-history.vige.it:8280 -e FRONTEND_URL=http://vota-frontend.vige.it -e REPORT_URL=http://vota-report.vige.it -d --name vota-auth vige/vota-auth
-```
-If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
-```
-    docker run -p 8480:8480 -e LC_ALL=it_IT.UTF-8 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
-```
-If you want to configure, add votes, classes and new users or approve users connect to: [http://localhost:8480/auth/admin/vota-domain/console](http://localhost:8480/auth/admin/vota-domain/console) with root/gtn in the keycloak webapp.
+If you want to configure, add votes, classes and new users or approve users connect to: [http://vota-auth.vige.it:8480/admin/vota-domain/console](http://vota-auth.vige.it:8480/admin/vota-domain/console) with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with root/gtn
 
 #### Docker production image
@@ -321,19 +269,8 @@ If you want start it in background mode:
 ```
     docker run -p 8843:8843 -d --name vota-auth vige/vota-auth
 ```
-Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the vota app so:
 ```
-    docker run -p 8843:8843 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
-```
-Here a sample how fill the variables:
-```
-    docker run -p 8843:8843 -e CITIESGENERATOR_URL=https://cities-generator-service.vige.it:8743 -e VOTINGPAPERS_URL=https://vota-votingpapers.vige.it:8543 -e VOTING_URL=https://vota-voting.vige.it:8443 -e HISTORY_URL=https://vota-history.vige.it:8643 -e FRONTEND_URL=https://vota-frontend.vige.it -e REPORT_URL=https://vota-report.vige.it -d --name vota-auth vige/vota-auth
-```
-If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
-```
-    docker run -p 8843:8843 -e LC_ALL=it_IT.UTF-8 -e CITIESGENERATOR_URL=${citiesgenerator.url} -e VOTINGPAPERS_URL=${votingpapers.url} -e VOTING_URL=${voting.url} -e HISTORY_URL=${history.url} -e FRONTEND_URL=${frontend.url} -e REPORT_URL=${report.url} -d --name vota-auth vige/vota-auth
-```
-If you want to configure, add votes, classes and new users or approve users connect to: [https://localhost:8843/auth/admin/vota-domain/console](https://localhost:8843/auth/admin/vota-domain/console) with root/gtn in the keycloak webapp.
+If you want to configure, add votes, classes and new users or approve users connect to: [https://vota-auth.vige.it:8843/admin/vota-domain/console](ttps://vota-auth.vige.it:8843/admin/vota-domain/console) with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with root/gtn
 
 ### DNS configuration
