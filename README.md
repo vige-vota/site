@@ -49,13 +49,13 @@ To build the application run the command inside the votingpapers folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/votingpapers-1.1.0-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev
+java -jar build/libs/votingpapers-1.1.1-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev
 ```
-and open http://localhost:8180/swagger-ui/index.html in your browser to connect to the vote application.
+and open http://vota-votingpapers.vige.it:8180/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.1.1-SNAPSHOT.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -66,9 +66,9 @@ docker pull vige/vota-votingpapers
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-votingpapers -p8180:8180 vige/vota-votingpapers
+docker run -d --name vota-votingpapers -p8543:8543 vige/vota-votingpapers
 ```
-Then open [http://vota-votingpapers.vige.it:8180/swagger-ui/index.html](http://vota-votingpapers.vige.it:8180/swagger-ui/index.html) to connect to the vote application
+Then open [https://vota-votingpapers.vige.it:8543/swagger-ui/index.html](https://vota-votingpapers.vige.it:8543/swagger-ui/index.html) to connect to the vote application
 
 ### Start voting
 
@@ -78,13 +78,13 @@ To build the application run the command inside the voting folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/voting-1.1.0-SNAPSHOT.jar --server.port=8080 --spring.profiles.active=dev
+java -jar build/libs/voting-1.1.1-SNAPSHOT.jar --server.port=8080 --spring.profiles.active=dev
 ```
-and open http://localhost:8080/swagger-ui/index.html in your browser to connect to the vote application.
+and open http://vota-voting.vige.it:8080/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.1.1-SNAPSHOT.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -95,9 +95,9 @@ docker pull vige/vota-voting
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-voting -p8080:8080 vige/vota-voting
+docker run -d --name vota-voting -p8443:8443 vige/vota-voting
 ```
-Then open [http://vota-voting.vige.it:8080/swagger-ui/index.html](http://vota-voting.vige.it:8080/swagger-ui/index.html) to connect to the vote application
+Then open [https://vota-voting.vige.it:8443/swagger-ui/index.html](https://vota-voting.vige.it:8443/swagger-ui/index.html) to connect to the vote application
 
 ### Start history
 
@@ -113,13 +113,13 @@ Start the Java application with the following commands:
 ```
 to start a MongoDB instance. Then:
 ```
-java -jar build/libs/history-1.1.0-SNAPSHOT.jar --server.port=8280 --spring.profiles.active=dev
+java -jar build/libs/history-1.1.1-SNAPSHOT.jar --server.port=8280 --spring.profiles.active=dev
 ```
-and open http://localhost:8280/swagger-ui/index.html in your browser to connect to the vote application.
+and open http://vota-history.vige.it:8280/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.1.0-SNAPSHOT.jar --server.ssl.key-store=./application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.1.1-SNAPSHOT.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -130,9 +130,9 @@ docker pull vige/vota-history
 ```
 To run the image use the command:
 ```
-docker run -d --name vota-history -p8280:8280 vige/vota-history
+docker run -d --name vota-history -p8643:8643 vige/vota-history
 ```
-Then open [http://vota-history.vige.it:8280/swagger-ui/index.html](http://vota-history.vige.it:8280/swagger-ui/index.html) to connect to the vote application
+Then open [https://vota-history.vige.it:8643/swagger-ui/index.html](https://vota-history.vige.it:8643/swagger-ui/index.html) to connect to the vote application
 
 ### Start frontend
 
@@ -142,9 +142,9 @@ npm install
 npm start
 ```
 
-And connect to [http://localhost:3000](http://localhost:3000)
+And connect to [http://vota-frontend.vige.it:3000](http://localhost:3000)
 
-You would update the online application in [http://vota-frontend.vige.it](http://vota-frontend.vige.it) url. Simply digit in your frontend folder the command:
+You would update the online application in [https://vota-frontend.vige.it](https://vota-frontend.vige.it) url. Simply digit in your frontend folder the command:
 ```
 npm run deploy
 ```
@@ -157,7 +157,7 @@ npm run build
 ```
 Then create a SSL certificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=vota-frontend.vige.it"
 ```
 and copy it in the home directory under the .https-serve folder.
 
@@ -169,12 +169,12 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open [https://localhost](https://localhost)
+Now you can connect in the application going to: open [https://vota-frontend.vige.it](https://localhost)
 
 #### Online application
 
 You can see the updated online application simply connecting to:
-Then open [http://vota-frontend.vige.it](http://vota-frontend.vige.it)
+Then open [https://vota-frontend.vige.it](https://vota-frontend.vige.it)
 
 ### Start report
 
@@ -184,7 +184,7 @@ npm install
 npm start
 ```
 
-And connect to [http://localhost:3000](http://localhost:3000)
+And connect to [http://vota-report.vige.it:3000](http://vota-report.vige.it:3000)
 
 You would update the online application in [http://vota-report.vige.it](http://vota-report.vige.it) url. Simply digit in your report folder the command:
 ```
@@ -200,7 +200,7 @@ npm run build
 ```
 Then create a SSL certificate for the https. Here a sample:
 ```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=localhost"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=vota-report.vige.it"
 ```
 and copy it in the home directory under the .http-serve folder.
 
@@ -212,7 +212,7 @@ Then go in the build folder and start with the command:
 ```
 https-serve -s build
 ```
-Now you can connect in the application going to: open https://localhost
+Now you can connect in the application going to: open https://vota-report.vige.it
 
 #### Online application
 
@@ -230,7 +230,7 @@ In development mode:
 
     mvn install -Pdevelopment -Dcitiesgenerator.url=http://cities-generator-service.vige.it:8380 -Dvotingpapers.url=http://vota-votingpapers.vige.it:8180 -Dvoting.url=http://vota-voting.vige.it:8080 -Dhistory.url=http://vota-history.vige.it:8280 -Dfrontend.url=http://vota-frontend.vige.it:3000
     
-Where citiesgenerator.url, votingpapers.url, voting.url, history.url, frontend.url and report.url are the host names of the app servers to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
+Where citiesgenerator.url, votingpapers.url, voting.url, history.url, frontend.url and report.url are the host names of the app servers to connect.
     
 In production mode:
 
