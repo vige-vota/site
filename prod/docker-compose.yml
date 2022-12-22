@@ -6,7 +6,7 @@ services:
       - "8743:8443"
     environment:
       - REALM=vota-domain
-      - AUTHURL=https://vota-auth.vige.it:8843/auth
+      - AUTHURL=https://vota-auth.vige.it:8843
       - RESOURCE=citiesGenerator
       - COUNTRY=${COUNTRY}
   vota-auth.vige.it:

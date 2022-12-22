@@ -6,7 +6,7 @@ services:
       - "8380:8080"
     environment:
       - REALM=vota-domain
-      - AUTHURL=http://vota-auth.vige.it:8480/auth
+      - AUTHURL=http://vota-auth.vige.it:8480
       - RESOURCE=citiesGenerator
       - COUNTRY=${COUNTRY}
   vota-auth.vige.it:
