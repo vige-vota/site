@@ -7,7 +7,7 @@ It works with:
 - JDK 19
 - Gradle 7.6
 - React JS 18.2.0
-- Spring Boot 2.7.1
+- Spring Boot 2.7.5
 - Docker 20.10.17
 - Keycloak 20.10.17
 - Cities generator 1.2.1
