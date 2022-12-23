@@ -12,7 +12,7 @@ services:
   vota-auth.vige.it:
     image: "vige/vota-auth"
     ports:
-      - "8480:8080"
+      - "8480:8480"
   vota-votingpapers.vige.it:
     image: "vige/vota-votingpapers"
     ports:
