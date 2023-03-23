@@ -1,0 +1,27 @@
+version: '3'
+services:
+  cities-generator-service.vige.it:
+    image: "vige/cities-generator"
+    ports:
+      - "8743:8443"
+    environment:
+      - REALM=vota-domain
+      - AUTHURL=https://vota-auth.vige.it:8843
+      - RESOURCE=citiesGenerator
+      - COUNTRY=${COUNTRY}
+  vota-auth.vige.it:
+    image: "vige/vota-auth"
+    ports:
+      - "8843:8843"
+  vota-votingpapers.vige.it:
+    image: "vige/vota-votingpapers"
+    ports:
+      - "8543:8543"
+  vota-voting.vige.it:
+    image: "vige/vota-voting"
+    ports:
+      - "8443:8443"
+  vota-history.vige.it:
+    image: "vige/vota-history"
+    ports:
+      - "8643:8643"
