@@ -4,13 +4,13 @@ VOTA (VOTing Application) is a web application compatible with mobile devices to
 
 It works with:
 
-- JDK 19
-- Gradle 7.6
+- JDK 20
+- Gradle 8.1
 - React JS 18.2.0
-- Spring Boot 2.7.5
+- Spring Boot 2.7.11
 - Docker 20.10.17
-- Keycloak 20.10.17
-- Cities generator 1.2.1
+- Keycloak 21.1.1
+- Cities generator 1.2.2
 
 ## Start the application
 
@@ -49,13 +49,13 @@ To build the application run the command inside the votingpapers folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/votingpapers-1.1.1.jar --server.port=8180 --spring.profiles.active=dev
+java -jar build/libs/votingpapers-1.1.2.jar --server.port=8180 --spring.profiles.active=dev
 ```
 and open http://vota-votingpapers.vige.it:8180/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.1.1.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/votingpapers-1.1.2.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8543 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -78,13 +78,13 @@ To build the application run the command inside the voting folder
 ```
 Start the Java application with the following commands:
 ```
-java -jar build/libs/voting-1.1.1.jar --server.port=8080 --spring.profiles.active=dev
+java -jar build/libs/voting-1.1.2.jar --server.port=8080 --spring.profiles.active=dev
 ```
 and open http://vota-voting.vige.it:8080/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.1.1.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/voting-1.1.2.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8443 --spring.profiles.active=prod
 ```
 
 #### Docker
@@ -113,13 +113,13 @@ docker run -p27017:27017 arm64v8/mongo:6.0
 ```
 to start a MongoDB instance. Then:
 ```
-java -jar build/libs/history-1.1.1.jar --server.port=8280 --spring.profiles.active=dev
+java -jar build/libs/history-1.1.2.jar --server.port=8280 --spring.profiles.active=dev
 ```
 and open http://vota-history.vige.it:8280/swagger-ui/index.html in your browser to connect to the vote application.
 
 If you need to start it on a environment production:
 ```
-java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.1.1.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
+java -Djavax.net.ssl.trustStore=./docker/prod/volume/cert/application.keystore -Djavax.net.ssl.trustStorePassword=password -jar build/libs/history-1.1.2.jar --server.ssl.key-store=./docker/prod/volume/cert/application.keystore --server.ssl.key-store-password=password --server.ssl.trust-store=./docker/prod/volume/cert/application.keystore --server.ssl.trust-store-password=password --server.port=8643 --spring.profiles.active=prod
 ```
 
 #### Docker
