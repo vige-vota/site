@@ -10,7 +10,7 @@ It works with:
 - Spring Boot 2.7.5
 - Docker 20.10.17
 - Keycloak 21.1.1
-- Cities generator 1.2.1
+- Cities generator 1.2.2
 
 ## Start the application
 
