@@ -1,4 +1,5 @@
 theme: jekyll-theme-minimal
 logo: /pages/vota.png
+favicon: /pages/vota.ico
 google_analytics: vote political online polling microservices
 show_downloads: true
